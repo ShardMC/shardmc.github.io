@@ -1,0 +1,39 @@
+---
+import { SITE } from '~/config.mjs';
+import { Icon } from 'astro-icon';
+import Layout from '~/layouts/PageLayout.astro';
+
+const meta = {
+  title: `Download`,
+  description: SITE.description,
+};
+---
+
+<Layout {meta}>
+  <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl flex gap-4 justify-between">
+    <section>
+      You can choose one of two versions: <code>Latest</code> and <code>Unstable</code>. If you need a specific version
+      of ShardMC, check out <a href="/get/archive" class="text-accent">the archive</a>.
+    </section>
+
+    <section class="text-center">
+      <span class="text-2xl md:text-xl font-bold whitespace-nowrap"> Downloads</span>
+      <div class="flex gap-4 mt-2 mb-4">
+        <a href="/get/latest" class="btn btn-primary sm:mb-0 w-full" aria-label="Download Latest">
+          <Icon name="tabler:box" class="w-6 h-6 mr-1" />
+          Stable
+        </a>
+
+        <a href="/get/unstable" class="btn sm:mb-0 w-full" aria-label="Download Unstable">
+          <Icon name="tabler:3d-cube-sphere" class="w-6 h-6 mr-1" />
+          Unstable
+        </a>
+      </div>
+
+      <a href="/get/experimentals" class="btn btn-secondary sm:mb-0 w-full" aria-label="WIP's">
+        <Icon name="tabler:planet" class="w-6 h-6 mr-1" />
+        WIP's
+      </a>
+    </section>
+  </section>
+</Layout>

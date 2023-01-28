@@ -1,18 +1,17 @@
 import defaultImage from './assets/images/default.png';
 
 const CONFIG = {
-  name: 'AstroWind',
+  name: 'ShardMC',
 
-  origin: 'https://astrowind.vercel.app',
+  origin: 'https://shardmc.github.io',
   basePathname: '/',
   trailingSlash: false,
 
-  title: 'AstroWind — Free template for create a website with Astro + Tailwind CSS',
-  description:
-    '🚀 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs.',
+  title: 'ShardMC — Your Minecraft Server Core',
+  description: '🚀 ShardMC is fast and customizeable Minecraft server core.',
   defaultImage: defaultImage,
 
-  defaultTheme: 'system', // Values: "system" | "light" | "dark" | "light:only" | "dark:only"
+  defaultTheme: 'dark', // Values: "system" | "light" | "dark" | "light:only" | "dark:only"
 
   language: 'en',
   textDirection: 'ltr',
@@ -25,14 +24,14 @@ const CONFIG = {
   }),
 
   googleAnalyticsId: false, // or "G-XXXXXXXXXX",
-  googleSiteVerificationId: 'orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M',
+  googleSiteVerificationId: 'aRxGCMha-zKKFyM6KT9PCfu0o4kVaoYIFQDijxiq9PI',
 
   blog: {
     disabled: false,
     postsPerPage: 4,
 
     post: {
-      permalink: '/%slug%', // Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
+      permalink: '/post/%slug%', // Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
       noindex: false,
       disabled: false,
     },

@@ -1,0 +1,52 @@
+---
+import { SITE } from '~/config.mjs';
+import Layout from '~/layouts/PageLayout.astro';
+
+const meta = {
+  title: `WIP Builds`,
+  description: SITE.description,
+};
+---
+
+<Layout {meta}>
+  <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
+    <table>
+      <tbody id="table">
+        <tr class="text-center">
+          <th class="border border-gray-700 pl-4 pr-4">Date <span class="whitespace-nowrap">(YYYY-MM-DD)</span></th>
+          <th class="border border-gray-700 pl-4 pr-4">Version</th>
+          <th class="border border-gray-700 pl-4 pr-4">Link</th>
+          <th class="border border-gray-700 pl-4 pr-4"><span class="whitespace-nowrap">Hash (SHA-256)</span></th>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</Layout>
+
+<script>
+  function parse(json) {
+    for (var element in json) {
+      document.getElementById('table')?.insertAdjacentHTML(
+        'beforeend',
+        `<tr>
+                    <td class="border border-gray-700 text-center">${json[element].date}</td>
+                    <td class="border border-gray-700 text-center">${json[element].name}</td>
+                    <td class="border border-gray-700"><a class="text-accent" href="${json[element].link}">${json[element].link}</a></td>
+                    <td class="border border-gray-700 text-center"><a class="text-accent" onclick="navigator.clipboard.writeText('${json[element].hash}')">Copy to Clipboard</a></td>
+                </tr>`
+      );
+    }
+  }
+
+  fetch('https://raw.githubusercontent.com/shardmc/shardmc-repo/main/main.repo.json', { cache: 'no-store' })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('HTTP error ' + response.status);
+      }
+
+      return response.json();
+    })
+    .then((json) => {
+      parse(json);
+    });
+</script>

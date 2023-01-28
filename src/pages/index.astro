@@ -13,6 +13,8 @@ import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
+import { getPermalink } from '~/utils/permalinks.ts';
+
 const meta = {
   title: SITE.title,
   description: SITE.description,
@@ -24,22 +26,21 @@ const meta = {
   <!-- Hero Widget ******************* -->
 
   <Hero
-    callToAction={{ text: 'Get template', href: 'https://github.com/onwidget/astrowind', icon: 'tabler:download' }}
-    callToAction2={{ text: 'Learn more', href: '#features' }}
-    image={{ src: import('~/assets/images/hero.png'), alt: 'AstroWind Hero Image' }}
+    callToAction={{ text: 'Downloads', href: getPermalink('/get'), icon: 'tabler:download' }}
+    callToAction2={{ text: 'Learn More', href: '#features' }}
+    image={{ src: import('~/assets/images/hero.webp'), alt: 'Hero Image' }}
   >
     <Fragment slot="title">
-      Free template for <span class="hidden lg:inline">create your website <br />with</span>
-      <span class="text-accent dark:text-white highlight"> Astro 2.0</span> + Tailwind CSS
+      ShardMC - Your <br />
+      <span class="text-accent highlight">Minecraft</span> Server Core
     </Fragment>
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 2.0 +
-        Tailwind CSS.</span
+        <span class="font-semibold">ShardMC</span> is an open-source Minecraft Server Core Software, designed to be customizeable
+        and very fast!</span
       >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span> Suitable for Startups,
-      Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs.
+      <span class="block mb-1 sm:hidden font-bold text-cyan-600">ShardMC: Customizeable, fast.</span>
     </Fragment>
   </Hero>
 
@@ -51,154 +52,74 @@ const meta = {
 
   <Features
     highlight="Features"
-    title="What you get with AstroWind"
-    subtitle="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque rem aperiam, eaque ipsa quae."
+    title="What you get with ShardMC"
+    subtitle="ShardMC has a lot of cool features designed for players by players!"
     items={[
       [
         {
-          title: 'Astro + Tailwind CSS Integration',
+          title: 'Customizeable',
           description:
-            'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
-          icon: 'tabler:brand-tailwind',
+            'Modules allow you to customize the server like you want! Like plugins, but better... and the best part is: modules can add support for your favourite Mod Loaders!',
+          icon: 'tabler:adjustments-horizontal',
         },
         {
-          title: 'Ready-to-use Components',
+          title: 'Fast',
           description:
-            'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
-          icon: 'tabler:components',
-        },
-        {
-          title: 'Best Practices',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
-          icon: 'tabler:list-check',
+            'ShardMC is designed with speed in mind! We optimized the heavy calculations and some other stuff!',
+          icon: 'tabler:bolt',
         },
       ],
       [
         {
-          title: 'Excellent Page Speed',
+          title: 'Open to new ideas',
           description:
-            'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
-          icon: 'tabler:rocket',
-        },
-        {
-          title: 'Search Engine Optimization (SEO)',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
-          icon: 'tabler:arrows-right-left',
-        },
-        {
-          title: 'Open to new ideas and contributions',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
+            "We are open to communitiy's ideas! If you know how to make this project better: contact us on Discord!",
           icon: 'tabler:bulb',
         },
+        {
+          title: 'Open Source',
+          description: 'ShardMC is open-source! Contributions are welcome!',
+          icon: 'tabler:brand-github',
+        },
       ],
     ]}
-  />
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    highlight="Inside template"
-    title="And what's inside? ..."
-    items={[
-      {
-        title: 'Per ei quaeque sensibus',
-        description:
-          'Ex usu illum iudico molestie. Pro ne agam facete mediocritatem, ridens labore facete mea ei. Pro id apeirian dignissim.',
-      },
-      {
-        title: 'Cu imperdiet posidonium sed',
-        description:
-          'Amet utinam aliquando ut mea, malis admodum ocurreret nec et, elit tibique cu nec. Nec ex maluisset inciderint, ex quis.',
-      },
-      {
-        title: 'Nulla omittam sadipscing mel ne',
-        description:
-          'At sed possim oporteat probatus, justo graece ne nec, minim commodo legimus ut vix. Ut eos iudico quando soleat, nam modus.',
-      },
-    ]}
-    image={{
-      src: import('~/assets/images/caos.jpg'),
-      alt: 'Colorful Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Ad vix debet docendi</h3>
-      Ne dicta praesent ocurreret has, diam theophrastus at pro. Eos etiam regione ut, persius eripuit quo id. Sit te euismod
-      tacimates.
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    isAfterContent
-    items={[
-      {
-        title: 'Per ei quaeque sensibus',
-      },
-      {
-        title: 'Cu imperdiet posidonium sed',
-      },
-      {
-        title: 'Nulla omittam sadipscing mel ne',
-      },
-      {
-        title: 'Per ei quaeque sensibus',
-      },
-      {
-        title: 'Cu imperdiet posidonium sed',
-      },
-      {
-        title: 'Nulla omittam sadipscing mel ne',
-      },
-    ]}
-    image={{
-      src: import('~/assets/images/vintage.jpg'),
-      alt: 'Vintage Image',
-    }}
   />
 
   <!-- Steps Widget ****************** -->
 
   <Steps
-    title="Get your dream website up and running in no time with AstroWind."
+    title="ShardMC Roadmap"
     items={[
       {
-        title: 'Step 1: <span class="font-medium">Download</span>',
+        title: 'Echo v0.1R',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mirisus tempus nulla, sed porttitor est nibh at nulla. Praesent placerat enim ut ex tincidunt vehicula.',
+          "First stable release of Echo - bytecode manipulation library for ShardMC, that allows to create modules and modify server's code!",
         icon: 'tabler:package',
       },
       {
-        title: 'Step 2: <span class="font-medium">Add content</em>',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mirisus tempus nulla, sed porttitor est nibh at nulla.',
-        icon: 'tabler:letter-case',
+        title: 'Amethyst v0.1R',
+        description: 'With the first release of Amethyst, it would be possible to launch the core and attach modules!',
+        icon: 'tabler:diamond',
       },
       {
-        title: 'Step 3: <span class="font-medium">Customize styles</span>',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mirisus tempus nulla, sed porttitor est nibh at nulla. Praesent placerat enim ut ex tincidunt vehicula. Fusce sit amet dui tellus.',
-        icon: 'tabler:paint',
+        title: 'Core v0.1R',
+        description: 'The core of ShardMC.',
+        icon: 'tabler:aperture',
       },
       {
-        title: 'Ready!',
+        title: 'ShardMC v0.1R',
         icon: 'tabler:check',
       },
     ]}
     image={{
-      src: import('~/assets/images/creativity.jpg'),
+      src: import('~/assets/images/warden-thinking.webp'),
       alt: 'Steps image',
     }}
   />
 
   <!-- Features2 Widget ************** -->
 
-  <Features2
+  <!--<Features2
     title="Most used widgets"
     subtitle="Provides frequently used components for building websites using Tailwind CSS"
     highlight="Components"
@@ -258,63 +179,38 @@ const meta = {
         icon: 'icon-park:page-template',
       },
     ]}
-  />
+  />-->
 
   <!-- HighlightedPosts Widget ******* -->
 
   <LatestPosts
-    title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
-			Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
-			Astro is a very interesting technology. Thanks.
+    title="Blog"
+    information={`We post various content on our blog: from development experience to announcements!
+      Every time we release a post, it will automatically post it on the Discord server as well!
+      You can also find some tutorials and tips there :)
 		`}
-    postIds={[
-      'get-started-website-with-astro-tailwind-css.md',
-      'how-to-customize-astrowind-to-your-brand.md',
-      'useful-resources-to-create-websites.md',
-      'astrowind-template-in-depth.md',
-    ]}
+    postIds={[]}
   />
 
   <!-- FAQs Widget ******************* -->
 
   <FAQs
     title="Frequently Asked Questions"
-    subtitle="Duis turpis dui, fringilla mattis sem nec, fringilla euismod neque. Morbi tincidunt lacus nec tortor scelerisque pulvinar."
+    subtitle=""
     highlight="FAQs"
     items={[
       [
         {
-          question: 'What do I need to start?',
-          answer:
-            'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
+          question: 'When can I try it out?',
+          answer: "Check our roadmap and blog for current progress! Currently, the answer is: when it's done.",
         },
         {
-          question: 'How to install the Astro + Tailwind CSS template?',
-          answer:
-            "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows. Some pilots get picked and become television programs. Some don't, become nothing. She starred in one of the ones that became nothing.",
+          question: 'How can I follow for updates?',
+          answer: `You can check out our <a href="https://discord.gg/CqVAzakrqx" class="text-accent">Discord</a>, <a href="/blog" class="text-accent">Blog</a> and even <a href="/rss.xml" class="text-accent">RSS</a>!`,
         },
         {
-          question: "What's something that you don't understand?",
-          answer:
-            "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
-        },
-      ],
-      [
-        {
-          question: "What's an example of when you changed your mind?",
-          answer:
-            "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
-        },
-        {
-          question: 'What is something that you would like to try again?',
-          answer:
-            "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
-        },
-        {
-          question: 'If you could only ask one question to each person you meet, what would that question be?',
-          answer:
-            "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
+          question: 'I have an idea! Where can I share it?',
+          answer: `You can find everything you need in <span class="text-accent">#❗┆read-me</span> channel in our Discord server!`,
         },
       ],
     ]}
@@ -322,18 +218,18 @@ const meta = {
 
   <!-- Stats Widget ****************** -->
 
-  <Stats
+  <!--<Stats
     items={[
       { name: 'Downloads', value: '132K' },
       { name: 'Stars', value: '24.8K' },
       { name: 'Forks', value: '10.3K' },
       { name: 'Users', value: '48.4K' },
     ]}
-  />
+  />-->
 
   <!-- CallToAction Widget *********** -->
 
-  <CallToAction
+  <!--<CallToAction
     callToAction={{
       text: 'Get template',
       href: 'https://github.com/onwidget/astrowind',
@@ -348,5 +244,5 @@ const meta = {
       Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
       waste more time! :P
     </Fragment>
-  </CallToAction>
+  </CallToAction>-->
 </Layout>
