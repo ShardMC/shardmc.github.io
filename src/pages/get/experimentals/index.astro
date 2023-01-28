@@ -8,6 +8,30 @@ const meta = {
 };
 ---
 
+<script is:inline>
+  fetch('https://raw.githubusercontent.com/shardmc/shardmc-repo/main/main.repo.json')
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error('HTTP error ' + response.status);
+    }
+
+    return response.json();
+  })
+  .then((json) => {
+    for (var element in json) {
+      document.getElementById('table')?.insertAdjacentHTML(
+        'beforeend',
+        `<tr class="text-center">
+          <td class="border border-gray-700">${json[element].date}</td>
+          <td class="border border-gray-700">${json[element].name}</td>
+          <td class="border border-gray-700 text-left text-accent"><a href="${json[element].link}">${json[element].link}</a></td>
+          <td class="border border-gray-700 text-accent"><a href="#" onclick="navigator.clipboard.writeText('${json[element].hash}')">Copy to Clipboard</a></td>
+        </tr>`
+      );
+    }
+  });
+</script>
+
 <Layout {meta}>
   <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
     <table>
@@ -22,31 +46,3 @@ const meta = {
     </table>
   </section>
 </Layout>
-
-<script>
-  function parse(json) {
-    for (var element in json) {
-      document.getElementById('table')?.insertAdjacentHTML(
-        'beforeend',
-        `<tr>
-                    <td class="border border-gray-700 text-center">${json[element].date}</td>
-                    <td class="border border-gray-700 text-center">${json[element].name}</td>
-                    <td class="border border-gray-700"><a class="text-accent" href="${json[element].link}">${json[element].link}</a></td>
-                    <td class="border border-gray-700 text-center"><a class="text-accent" onclick="navigator.clipboard.writeText('${json[element].hash}')">Copy to Clipboard</a></td>
-                </tr>`
-      );
-    }
-  }
-
-  fetch('https://raw.githubusercontent.com/shardmc/shardmc-repo/main/main.repo.json', { cache: 'no-store' })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('HTTP error ' + response.status);
-      }
-
-      return response.json();
-    })
-    .then((json) => {
-      parse(json);
-    });
-</script>
