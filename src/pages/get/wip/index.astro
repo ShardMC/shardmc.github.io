@@ -3,7 +3,7 @@ import { SITE } from '~/config.mjs';
 import Layout from '~/layouts/PageLayout.astro';
 
 const meta = {
-  title: `Archive`,
+  title: `WIP Builds`,
   description: SITE.description,
 };
 ---
@@ -29,7 +29,7 @@ const meta = {
 <script type="text/javascript" src="/api/icons.js"></script>
 
 <script is:inline>
-  parseShardRepo('https://raw.githubusercontent.com/shardmc/shardmc-repo/main/main.repo.json', function (json) {
+  parseShardRepo('https://raw.githubusercontent.com/shardmc/shardmc-repo/main/wip.repo.json', function (json) {
     document.getElementById('table')?.insertAdjacentHTML(
       'beforeend',
       `<tr class="text-center">

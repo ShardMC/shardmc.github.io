@@ -12,28 +12,70 @@ const meta = {
 <Layout {meta}>
   <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl flex gap-4 justify-between">
     <section>
-      You can choose one of two versions: <code>Latest</code> and <code>Unstable</code>. If you need a specific version
-      of ShardMC, check out <a href="/get/archive" class="text-accent">the archive</a>.
+      <h2 id="title-text" class="font-bold text-xl"></h2>
+      You can choose one of two versions: <code>Stable</code> and <code>Unstable</code>. If you need a specific version
+      of ShardMC, check out <a href="/get/archive" class="text-accent">the archive</a>. Note: currently, only unstable
+      is available!
     </section>
 
     <section class="text-center">
-      <span class="text-2xl md:text-xl font-bold whitespace-nowrap"> Downloads</span>
+      <span class="text-2xl md:text-xl font-bold whitespace-nowrap">Downloads</span>
       <div class="flex gap-4 mt-2 mb-4">
-        <a href="/get/latest" class="btn btn-primary sm:mb-0 w-full" aria-label="Download Latest">
+        <a onclick="downloadStable()" href="#" class="btn btn-primary sm:mb-0 w-full" aria-label="Download Stable">
           <Icon name="tabler:box" class="w-6 h-6 mr-1" />
           Stable
         </a>
 
-        <a href="/get/unstable" class="btn sm:mb-0 w-full" aria-label="Download Unstable">
+        <a onclick="downloadUnstable()" href="#" class="btn sm:mb-0 w-full" aria-label="Download Unstable">
           <Icon name="tabler:3d-cube-sphere" class="w-6 h-6 mr-1" />
           Unstable
         </a>
       </div>
 
-      <a href="/get/experimentals" class="btn btn-secondary sm:mb-0 w-full" aria-label="WIP's">
+      <a href="/get/wip" class="btn btn-secondary sm:mb-0 w-full" aria-label="WIP's">
         <Icon name="tabler:planet" class="w-6 h-6 mr-1" />
         WIP's
       </a>
     </section>
   </section>
 </Layout>
+
+<script type="text/javascript" src="/api/get.js"></script>
+
+<script is:inline>
+  var stable;
+  var unstable;
+
+  parseShardRepo('https://raw.githubusercontent.com/shardmc/shardmc-repo/main/main.repo.json', function (json) {
+    if (stable === undefined && json.type === 'release') {
+      stable = json.link;
+    } else if (unstable === undefined) {
+      unstable = json.link;
+    }
+  });
+
+  function download(uri) {
+    document.getElementById('title-text').innerText = 'Thank you for downloading!';
+
+    var link = document.createElement('a');
+    link.setAttribute('download', '');
+    link.href = uri;
+
+    document.body.appendChild(link);
+
+    link.click();
+    link.remove();
+  }
+
+  function downloadStable() {
+    if (stable !== undefined) {
+      download(stable);
+    }
+  }
+
+  function downloadUnstable() {
+    if (unstable !== undefined) {
+      download(unstable);
+    }
+  }
+</script>
