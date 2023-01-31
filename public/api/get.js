@@ -18,6 +18,7 @@ attachEvent('[data-aw-toggle-color-scheme]', 'click', function () {
   fixIcons(localStorage.theme !== 'light');
 });
 
+// eslint-disable-next-line no-unused-vars
 function parseShardRepo(url, callback) {
   fetch(url)
     .then((response) => {
