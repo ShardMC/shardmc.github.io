@@ -33,11 +33,11 @@ const {
               <div class="flex flex-col items-center mr-4">
                 <div>
                   {index !== items.length - 1 ? (
-                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-primary dark:border-cyan-700 border-2">
-                      {icon && <Icon name={icon} class="w-6 h-6 text-accent dark:text-slate-200" />}
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-cyan-700 dark:border-cyan-700 border-2">
+                      {icon && <Icon name={icon} class="w-6 h-6 text-cyan-600 dark:text-slate-200" />}
                     </div>
                   ) : (
-                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-primary border-2 bg-primary dark:bg-cyan-700 dark:border-cyan-700">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-cyan-700 border-2 bg-cyan-700 dark:bg-cyan-700 dark:border-cyan-700">
                       <Icon name={icon} class="w-6 h-6 text-white dark:text-slate-200" />
                     </div>
                   )}
