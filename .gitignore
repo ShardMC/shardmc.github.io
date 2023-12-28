@@ -20,6 +20,3 @@ pnpm-debug.log*
 .DS_Store
 
 .astro
-
-README.md
-src/pages/landing
