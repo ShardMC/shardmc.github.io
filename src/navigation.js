@@ -8,10 +8,35 @@ export const headerData = {
     },
     {
       text: 'Blog',
-      href: getBlogPermalink(),
+      links: [
+        {
+          text: 'Blog List',
+          href: getBlogPermalink(),
+        },
+        {
+          text: 'Article',
+          href: getPermalink('get-started-website-with-astro-tailwind-css', 'post'),
+        },
+        {
+          text: 'Article (with MDX)',
+          href: getPermalink('markdown-elements-demo-post', 'post'),
+        },
+        {
+          text: 'Category Page',
+          href: getPermalink('tutorials', 'category'),
+        },
+        {
+          text: 'Tag Page',
+          href: getPermalink('astro', 'tag'),
+        },
+      ],
+    },
+    {
+      text: 'Widgets',
+      href: '#',
     },
   ],
-  actions: [{ type: 'button', text: 'Downloads', href: getPermalink('/get') }],
+  actions: [{ text: 'Downloads', href: getPermalink('/get') }],
 };
 
 export const footerData = {

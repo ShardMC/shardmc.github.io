@@ -1,5 +1,4 @@
 ---
-import { SITE } from '~/config.mjs';
 import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
@@ -8,27 +7,33 @@ import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Content from '~/components/widgets/Content.astro';
-import LatestPosts from '~/components/blog/LatestPosts.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 import { getPermalink } from '~/utils/permalinks.ts';
 
-const meta = {
-  title: SITE.title,
-  description: SITE.description,
-  dontUseTitleTemplate: true,
+const metadata = {
+  title: 'ShardMC — Your Minecraft Server Core',
+  ignoreTitleTemplate: true,
 };
 ---
 
-<Layout {meta}>
+<Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
 
   <Hero
-    callToAction={{ text: 'Downloads', href: getPermalink('/get'), icon: 'tabler:download' }}
-    callToAction2={{ text: 'Learn More', href: '#features' }}
-    image={{ src: import('~/assets/images/hero.webp'), alt: 'Hero Image' }}
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Downloads',
+        href: getPermalink('/get'),
+        icon: 'tabler:download',
+      },
+      { text: 'Learn more', href: '#features' },
+    ]}
+    image={{ src: '~/assets/images/hero.png', alt: 'Hero Image' }}
   >
     <Fragment slot="title">
       ShardMC - Your <br />
@@ -40,7 +45,7 @@ const meta = {
         <span class="font-semibold">ShardMC</span> is an open-source Minecraft Server Core Software, designed to be customizeable
         and very fast!</span
       >
-      <span class="block mb-1 sm:hidden font-bold text-cyan-600">ShardMC: Customizeable, fast.</span>
+      <span class="block mb-1 sm:hidden font-bold text-cyan-600">ShardMC: Customizeable, Fast.</span>
     </Fragment>
   </Hero>
 
@@ -51,7 +56,8 @@ const meta = {
   <!-- Features Widget *************** -->
 
   <Features
-    highlight="Features"
+    id="features"
+    tagline="Features"
     title="What you get with ShardMC"
     subtitle="ShardMC has a lot of cool features designed for players by players!"
     items={[
@@ -124,74 +130,73 @@ const meta = {
   <!--<Features2
     title="Most used widgets"
     subtitle="Provides frequently used components for building websites using Tailwind CSS"
-    highlight="Components"
+    tagline="Components"
     items={[
       {
         title: 'Headers',
-        description:
-          'In general, Headers contain information that makes it easier for visitors to interact with the website.',
+        description: "Ever tried driving without GPS? Boom! That's why websites need headers for direction.",
         icon: 'flat-color-icons:template',
       },
       {
         title: 'Heros',
         description:
-          'If you want your website to get more than its fair share of visitors, the Hero section needs to be stellar.',
+          "Picture a superhero landing – epic, right? That's the job of a Hero section, making grand entrances!",
         icon: 'flat-color-icons:gallery',
       },
       {
         title: 'Features',
         description:
-          'Display your product in action and how the Features actually create a solution for your target customer.',
-        icon: 'flat-color-icons:todo-list',
+          'Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!',
+        icon: 'flat-color-icons:approval',
       },
       {
         title: 'Content',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+          "Dive into the meat and potatoes of a site; without it, you'd just be window shopping. Content is king.",
         icon: 'flat-color-icons:document',
       },
       {
         title: 'Call-to-Action',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+          'That enthusiastic friend who\'s always urging, "Do it! Do it!"? Yeah, that\'s this button nudging you towards adventure.',
         icon: 'flat-color-icons:advertising',
       },
       {
         title: 'Pricing',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+        description: 'Behold the dessert menu of the website world. Tempting choices await, can you resist?',
         icon: 'flat-color-icons:currency-exchange',
       },
       {
         title: 'Testimonial',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+        description: 'Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.',
         icon: 'flat-color-icons:voice-presentation',
       },
       {
         title: 'Contact',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+          'Like a digital mailbox, but faster! Drop a line, ask a question, or send a virtual high-five. Ding! Message in.',
         icon: 'flat-color-icons:business-contact',
       },
       {
         title: 'Footers',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-        icon: 'icon-park:page-template',
+        description: "The footer's like the credits of a movie but sprinkled with easter eggs. Time to hunt!",
+        icon: 'flat-color-icons:database',
       },
     ]}
-  />-->
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-cyan-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
 
   <!-- HighlightedPosts Widget ******* -->
 
-  <LatestPosts
+  <BlogLatestPosts
     title="Blog"
     information={`We post various content on our blog: from development experience to announcements!
       Every time we release a post, it will automatically post it on the Discord server as well!
       You can also find some tutorials and tips there :)
-		`}
-    postIds={[]}
+    `}
   />
 
   <!-- FAQs Widget ******************* -->
@@ -200,19 +205,20 @@ const meta = {
     title="Frequently Asked Questions"
     subtitle=""
     highlight="FAQs"
+    classes={{ container: 'max-w-6xl' }}
     items={[
       [
         {
-          question: 'When can I try it out?',
-          answer: "Check our roadmap and blog for current progress! Currently, the answer is: when it's done.",
+          title: 'When can I try it out?',
+          description: "Check our roadmap and blog for current progress! Currently, the answer is: when it's done.",
         },
         {
-          question: 'How can I follow for updates?',
-          answer: `You can check out our <a href="https://discord.gg/CqVAzakrqx" class="text-accent">Discord</a>, <a href="/blog" class="text-accent">Blog</a> and even <a href="/rss.xml" class="text-accent">RSS</a>!`,
+          title: 'How can I follow for updates?',
+          description: `You can check out our <a href="https://discord.gg/CqVAzakrqx" class="text-accent">Discord</a>, <a href="/blog" class="text-accent">Blog</a> and even <a href="/rss.xml" class="text-accent">RSS</a>!`,
         },
         {
-          question: 'I have an idea! Where can I share it?',
-          answer: `You can find everything you need in <span class="text-accent">#❗┆read-me</span> channel in our Discord server!`,
+          title: 'I have an idea! Where can I share it?',
+          description: `You can find everything you need in <span class="text-accent">#❗┆read-me</span> channel in our Discord server!`,
         },
       ],
     ]}
@@ -222,24 +228,27 @@ const meta = {
 
   <!--<Stats
     items={[
-      { name: 'Downloads', value: '132K' },
-      { name: 'Stars', value: '24.8K' },
-      { name: 'Forks', value: '10.3K' },
-      { name: 'Users', value: '48.4K' },
+      { title: 'Downloads', amount: '132K' },
+      { title: 'Stars', amount: '24.8K' },
+      { title: 'Forks', amount: '10.3K' },
+      { title: 'Users', amount: '48.4K' },
     ]}
   />-->
 
   <!-- CallToAction Widget *********** -->
 
   <!--<CallToAction
-    callToAction={{
-      text: 'Get template',
-      href: 'https://github.com/onwidget/astrowind',
-      icon: 'tabler:download',
-    }}
+    callToAction={[
+      {
+        variant: 'primary',
+        text: 'Get template',
+        href: 'https://github.com/onwidget/astrowind',
+        icon: 'tabler:download',
+      },
+    ]}
   >
     <Fragment slot="title">
-      Astro + <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
+      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
     </Fragment>
 
     <Fragment slot="subtitle">
