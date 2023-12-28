@@ -41,9 +41,17 @@ export const footerData = {
       title: 'ShardMC Project',
       links: [
         { text: 'Team & Contributors', href: getPermalink('/contributors') },
+        { text: 'Projects', href: getPermalink('/projects') },
         { text: 'Blog', href: getBlogPermalink() },
       ],
     },
+    {
+      title: 'Other Projects',
+      links: [
+        { text: 'Homepage', href: '/projects' },
+        { text: 'Arte', href: '/projects/arte/about' }
+      ]
+    }
   ],
   secondaryLinks: [],
   socialLinks: [
@@ -53,6 +61,6 @@ export const footerData = {
   ],
   footNote: `
     <span class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 float-left rounded-sm bg-[url(/favicon.png)]"></span>
-    ShardMC Project · ShardMC is not affiliated with Mojang.
+    ShardMC Project · Not an official Minecraft [product/service/event/etc.]. Not approved by or associated with Mojang or Microsoft.
   `,
 };
