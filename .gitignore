@@ -21,4 +21,7 @@ pnpm-debug.log*
 .DS_Store
 
 .astro
+
+
 projects/
+wiki/
