@@ -15,7 +15,7 @@ export const headerData = {
       links: [
         {
           text: 'Arte',
-          href: getPermalink('/projects/arte/about'),
+          href: getPermalink('/projects/arte'),
         },
       ],
       href: getPermalink('/projects'),
@@ -49,7 +49,7 @@ export const footerData = {
       title: 'Other Projects',
       links: [
         { text: 'Homepage', href: '/projects' },
-        { text: 'Arte', href: '/projects/arte/about' }
+        { text: 'Arte', href: '/projects/arte' }
       ]
     }
   ],
